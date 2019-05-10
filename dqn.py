@@ -5,6 +5,7 @@ from collections import deque
 import gym
 import time
 import math
+import fivechessenv
  
 GAMMA = 0.9 # discount factor for target Q
 INITIAL_EPSILON = 0.1 # starting value of epsilon
@@ -21,7 +22,7 @@ class DQN():
 		# init some parameters
 		self.time_step = 0
 		self.epsilon = INITIAL_EPSILON
-		self.SIZE = env.env.SIZE
+		self.SIZE = env.SIZE
 		self.state_dim = self.SIZE*self.SIZE+1
 		self.action_dim = self.SIZE*self.SIZE
 		self.hide_layer_inputs = 52
@@ -180,7 +181,7 @@ def main():
 	# initialize OpenAI Gym env and dqn agent
 	env = gym.make(ENV_NAME)
 	agent = DQN(env)
-	SIZE = env.env.SIZE
+	SIZE = env.SIZE
  
 	agent.copyWeightsToTarget()
  
@@ -200,7 +201,7 @@ def main():
 			action = agent.egreedy_action(state) # e-greedy action for train
 			
 			action = [math.floor(action/SIZE),action%SIZE,camp]
-			#if env.env.is_valid_set_coord(action[0],action[1]):
+			#if env.is_valid_set_coord(action[0],action[1]):
 			next_state,reward,done,_ = env.step(action)
 			next_state = np.reshape(next_state,[-1])
 			if step%2 == 0:
