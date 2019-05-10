@@ -172,7 +172,7 @@ class DQN():
 		return tf.Variable(initial)
 # ---------------------------------------------------------
 # Hyper Parameters
-ENV_NAME = 'FiveChess-v0'
+ENV_NAME = 'FiveChessEnv-v0'
 EPISODE = 10000 # Episode limitation
 STEP = 300 # Step limitation in an episode
 TEST = 1 # The number of experiment test every 100 episode
