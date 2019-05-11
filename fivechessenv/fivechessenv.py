@@ -255,7 +255,7 @@ class FiveChessEnv(gym.Env):
 				self.chess.append([])
 				for y in range(self.SIZE):
 					c = rendering.make_circle(width/2-3)
-					ct = rendering.Transform(translation=(0,0))
+					ct = rendering.Transform(translation=(-10,-10))
 					c.add_attr(ct)
 					c.set_color(0,0,0)
 					self.chess[x].append([c,ct])
@@ -272,7 +272,7 @@ class FiveChessEnv(gym.Env):
 					else:
 						self.chess[x][y][0].set_color(0,0,0)
 				else:
-					self.chess[x][y][1].set_translation(-10,-10)
+					self.chess[x][y][1].set_translation(-50,-50)
  
  
 		return self.viewer.render(return_rgb_array=mode == 'rgb_array')
